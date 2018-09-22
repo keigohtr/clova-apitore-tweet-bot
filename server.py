@@ -52,9 +52,13 @@ def launch_request_handler(clova_request):
     print(f'CEK userId: {user_id}')
     obj = AccessTokens.query.filter_by(user_id=user_id).one_or_none()
     if obj is None:
-        line_bot_api.push_message(user_id, TextSendMessage(text=usage))
-        message = "はじめまして。まずLINEで友達登録をして初期設定を行ってください。"
-        return clova.response(message, end_session=True)
+        try:
+            line_bot_api.push_message(user_id, TextSendMessage(text=usage))
+            message = "はじめまして。まずLINEで友達追加をして初期設定を行ってください。"
+            return clova.response(message, end_session=True)
+        except:
+            message = "はじめまして。まずLINEで友達追加をして初期設定を行ってください。"
+            return clova.response(message, end_session=True)
     else:
         return clova.response("はい、なにをしらべますか")
 
