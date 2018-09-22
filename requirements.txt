@@ -1,5 +1,5 @@
 flask==1.0.2
-clova-cek-sdk==1.0.0
+clova-cek-sdk==1.0.1
 line-bot-sdk==1.8.0
 SQLAlchemy==1.2.7
 flask-sqlalchemy==2.3.2
